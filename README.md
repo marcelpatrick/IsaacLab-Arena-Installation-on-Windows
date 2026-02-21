@@ -39,11 +39,13 @@ git clone https://github.com/isaac-sim/IsaacLab-Arena.git
 cd IsaacLab-Arena
 ```
 
-# Step 3: Initialize the submodules  
+# Step 3: Initialize the submodules and install dependencies
 ```
 git config submodule.submodules/IsaacLab.url https://github.com/isaac-sim/IsaacLab.git
 git config submodule.submodules/Isaac-GR00T.url https://github.com/NVIDIA/Isaac-GR00T.git
 git submodule update --init --recursive
+
+conda install -c conda-forge pinocchio "scipy==<your_version>" "numpy==<your_version>"
 ```
 
 # Step 4: Install Arena as a Python package into your existing environment without touching any existing dependencies

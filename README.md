@@ -44,8 +44,13 @@ cd IsaacLab-Arena
 git config submodule.submodules/IsaacLab.url https://github.com/isaac-sim/IsaacLab.git
 git config submodule.submodules/Isaac-GR00T.url https://github.com/NVIDIA/Isaac-GR00T.git
 git submodule update --init --recursive
+```
 
-conda install -c conda-forge pinocchio "scipy==<your_version>" "numpy==<your_version>"
+Install Pinnochio library with scipy and numpy versions that will not conflict to IsaacSim and IsaacLab dependencies:
+```
+conda install -c conda-forge pinocchio "numpy<2.0.0" scipy==1.15.3 --freeze-installed
+
+pip install onnxruntime lightwheel_sdk
 ```
 
 # Step 4: Install Arena as a Python package into your existing environment without touching any existing dependencies
@@ -83,3 +88,8 @@ pytest -sv -m with_cameras isaaclab_arena/tests/
 pytest -sv -m "not with_cameras" isaaclab_arena/tests/
 ```
 
+# Step 7: Run a first Arena Environment
+```
+set KMP_DUPLICATE_LIB_OK=TRUE
+%USERPROFILE%\IsaacLab\isaaclab.bat -p isaaclab_arena\examples\compile_env_notebook.py
+```
